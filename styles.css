@@ -1,128 +1,150 @@
-:root {
-    --unc-blue: #7BAFD4;
-    --dark-blue: #13293d;
-    --glow: rgba(123, 175, 212, 0.5);
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --dark-color: #010113;
+  /* UNC Blue Palette */
+  --unc-blue: #7BAFD4;
+  --unc-blue-dark: #4B9CD3;
+  --unc-blue-light: #B9D9EB;
+  --stem-color: #1a3a5a; /* Deeper blue-grey for stems */
 }
 
 body {
-    background-color: #0b1522;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100vh;
-    font-family: 'Arial', sans-serif;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  overflow: hidden;
+  perspective: 1000px;
 }
 
-.message {
-    position: absolute;
-    top: 10%;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 2.5rem;
-    text-shadow: 0 0 10px var(--unc-blue);
-    z-index: 100;
-    animation: fadeIn 3s ease-in;
-}
-
-.flowers {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.flower {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 40px;
-    bottom: -10px;
-}
-
-/* The Stem */
-.flower__line {
-    width: 3px;
-    height: 35vh;
-    background-image: linear-gradient(to top, rgba(0,0,0,0), #2a4d6c, var(--unc-blue));
-    border-radius: 4px;
-    animation: growStem 4s ease-out forwards;
-    transform-origin: bottom;
-}
-
-/* The Petal Container */
-.flower__leafs {
-    position: relative;
-    animation: bloom 3s ease-out 1.5s backwards, sway 4s ease-in-out infinite;
-    transform-origin: bottom center;
-}
-
-.flower__leaf {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 60px;
-    height: 100px;
-    border-radius: 51% 49% 48% 52% / 60% 59% 41% 40%;
-    background-color: var(--unc-blue);
-    background-image: linear-gradient(to top, var(--unc-blue), #ffffff);
-    transform-origin: bottom center;
-    opacity: 0.9;
-    box-shadow: inset 0 0 15px rgba(255,255,255,0.5), 0 0 20px var(--glow);
-}
-
-/* Individual Petal Positions */
-.flower__leaf--1 { transform: translateX(-50%) rotate(20deg); }
-.flower__leaf--2 { transform: translateX(-50%) rotate(-20deg); }
-.flower__leaf--3 { transform: translateX(-50%) rotate(45deg) scale(0.8); opacity: 0.7; }
-.flower__leaf--4 { transform: translateX(-50%) rotate(-45deg) scale(0.8); opacity: 0.7; }
-
-/* The Glowing Center */
-.flower__white-circle {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #fff;
-    filter: blur(5px);
-}
-
-/* Variations in height and timing */
-.flower--2 .flower__line { height: 45vh; animation-delay: 0.5s; }
-.flower--2 .flower__leafs { animation-delay: 2s; }
-.flower--3 .flower__line { height: 30vh; animation-delay: 1s; }
-.flower--3 .flower__leafs { animation-delay: 2.5s; }
-
-/* Animations */
-@keyframes growStem {
-    0% { transform: scaleY(0); }
-    100% { transform: scaleY(1); }
-}
-
-@keyframes bloom {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes sway {
-    0%, 100% { transform: rotate(-2deg); }
-    50% { transform: rotate(2deg); }
+/* --- Added Header Styling --- */
+.top-message {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 15px var(--unc-blue), 0 0 30px rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+  animation: fadeIn 3s ease-in;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Background Gradient Adjustment --- */
+.night {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  filter: blur(0.1vmin);
+  background-image: radial-gradient(
+      ellipse at top,
+      transparent 0%,
+      var(--dark-color)
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      var(--dark-color),
+      rgba(123, 175, 212, 0.2)
+    ),
+    repeating-linear-gradient(
+      220deg,
+      rgb(0, 0, 0) 0px,
+      rgb(0, 0, 0) 19px,
+      transparent 19px,
+      transparent 22px
+    ),
+    linear-gradient(90deg, #13293d, #010113);
+}
+
+/* --- Flower Petal Colors (UNC Blue) --- */
+.flower__leaf {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8vmin;
+  height: 11vmin;
+  border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
+  background-color: var(--unc-blue);
+  background-image: linear-gradient(to top, var(--unc-blue-dark), var(--unc-blue));
+  transform-origin: bottom center;
+  opacity: 0.9;
+  box-shadow: inset 0 0 2.5vmin rgba(255, 255, 255, 0.6);
+}
+
+.flower__leaf--4 {
+  background-image: linear-gradient(to top, var(--unc-blue), var(--unc-blue-light));
+}
+
+.flower__leafs::after {
+  background-color: var(--unc-blue-light);
+  filter: blur(8vmin);
+}
+
+/* --- Flower Center --- */
+.flower__white-circle {
+  position: absolute;
+  left: -3.5vmin;
+  top: -3vmin;
+  width: 9vmin;
+  height: 4vmin;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 15px white;
+}
+
+/* --- Stem and Leaf Colors --- */
+.flower__line {
+  height: 55vmin;
+  width: 1.5vmin;
+  background-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.2),
+      transparent,
+      rgba(255, 255, 255, 0.2)
+    ),
+    linear-gradient(to top, transparent 10%, var(--stem-color), var(--unc-blue-dark));
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.flower__line__leaf {
+  background-image: linear-gradient(to top, rgba(26, 58, 90, 0.6), var(--unc-blue-dark));
+}
+
+/* --- Glow Lights --- */
+.flower__light {
+  background-color: white;
+  box-shadow: 0 0 10px var(--unc-blue-light);
+}
+
+.flower__light:nth-child(odd) {
+  background-color: var(--unc-blue);
+}
+
+/* --- Grass and Long Leaves --- */
+.flower__grass {
+  --c: var(--stem-color);
+}
+
+.long-g .leaf {
+  --c: var(--unc-blue-dark);
 }
