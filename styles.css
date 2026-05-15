@@ -1,122 +1,112 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #fff6fb, #e8fcfb);
+    padding: 0;
     overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top, #061826, #0f2942, #cfe8ff);
+    height: 100vh;
 }
 
 .container {
     text-align: center;
-    margin-top: 30px;
+    padding-top: 40px;
 }
 
 h1 {
+    color: white;
     font-size: 3rem;
-    color: #0f6b6f;
-    animation: glow 2s infinite alternate;
+    text-shadow: 0 0 15px #7baee6;
+    margin-bottom: 80px;
 }
 
-@keyframes glow {
-    from { text-shadow: 0 0 8px #b2f5ea; }
-    to { text-shadow: 0 0 20px #81e6d9; }
-}
-
-.bouquet {
+/* Garden */
+.garden {
     position: relative;
-    width: 420px;
+    width: 100%;
     height: 500px;
-    margin: auto;
-    animation: sway 3s ease-in-out infinite alternate;
 }
 
-@keyframes sway {
-    from { transform: rotate(-2deg); }
-    to { transform: rotate(2deg); }
-}
-
-/* flower base */
+/* Flower */
 .flower {
     position: absolute;
-    width: 90px;
-    height: 90px;
+    bottom: 0;
 }
 
-.flower span {
+.flower1 { left: 30%; }
+.flower2 { left: 50%; }
+.flower3 { left: 70%; }
+
+.stem {
+    width: 8px;
+    height: 250px;
+    background: #2d6a4f;
+    margin: auto;
+    animation: grow 2s ease forwards;
+}
+
+/* Bloom */
+.bloom {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    transform: scale(0);
+    animation: bloom 2s ease forwards;
+    animation-delay: 2s;
+}
+
+.flower2 .bloom {
+    animation-delay: 3s;
+}
+
+.flower3 .bloom {
+    animation-delay: 4s;
+}
+
+.bloom span {
     position: absolute;
     width: 45px;
     height: 45px;
+    background: #4b9fe1; /* UNC blue */
     border-radius: 50%;
+    box-shadow: 0 0 20px rgba(75,159,225,0.8);
 }
 
-.flower span:nth-child(1) { top: 0; left: 22px; }
-.flower span:nth-child(2) { top: 22px; left: 0; }
-.flower span:nth-child(3) { top: 22px; right: 0; }
-.flower span:nth-child(4) { bottom: 0; left: 22px; }
+.bloom span:nth-child(1) { top: 0; left: 22px; }
+.bloom span:nth-child(2) { top: 22px; left: 0; }
+.bloom span:nth-child(3) { top: 22px; right: 0; }
+.bloom span:nth-child(4) { bottom: 0; left: 22px; }
+.bloom span:nth-child(5) { top: 22px; left: 22px; }
 
 .center {
     position: absolute;
-    width: 32px;
-    height: 32px;
-    background: #ffd166;
+    width: 28px;
+    height: 28px;
+    background: #ffffff;
     border-radius: 50%;
-    top: 29px;
-    left: 29px;
+    top: 31px;
+    left: 31px;
     z-index: 2;
 }
 
-/* colors + placement */
-.f1 { top: 20px; left: 160px; }
-.f1 span { background: #ff8fab; }
-
-.f2 { top: 80px; left: 70px; }
-.f2 span { background: #90e0ef; }
-
-.f3 { top: 80px; right: 70px; }
-.f3 span { background: #c77dff; }
-
-.f4 { top: 160px; left: 110px; }
-.f4 span { background: #80ed99; }
-
-.f5 { top: 160px; right: 110px; }
-.f5 span { background: #ffd166; }
-
-.f6 { top: 120px; left: 165px; }
-.f6 span { background: #f9bec7; }
-
-/* stems */
-.stem {
-    position: absolute;
-    width: 8px;
-    height: 220px;
-    background: #2f855a;
-    border-radius: 10px;
-    top: 210px;
+/* Animations */
+@keyframes grow {
+    from {
+        height: 0;
+    }
+    to {
+        height: 250px;
+    }
 }
 
-.s1 { left: 200px; }
-.s2 { left: 120px; transform: rotate(12deg); }
-.s3 { right: 120px; transform: rotate(-12deg); }
-.s4 { left: 165px; transform: rotate(5deg); }
-.s5 { right: 165px; transform: rotate(-5deg); }
-.s6 { left: 210px; transform: rotate(2deg); }
-
-/* hearts */
-.hearts {
-    margin-top: 15px;
-}
-
-.hearts span {
-    font-size: 2rem;
-    color: #ff8fab;
-    margin: 0 10px;
-    animation: float 3s infinite ease-in-out;
-}
-
-.hearts span:nth-child(2) { animation-delay: 1s; }
-.hearts span:nth-child(3) { animation-delay: 2s; }
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-18px); }
-    100% { transform: translateY(0); }
+@keyframes bloom {
+    0% {
+        transform: scale(0) rotate(-90deg);
+    }
+    70% {
+        transform: scale(1.2) rotate(10deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }
