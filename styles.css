@@ -1,177 +1,112 @@
-/* Reset and Background */
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, #0a1118, #13293d);
     overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top, #061826, #0f2942, #cfe8ff);
+    height: 100vh;
 }
 
-/* Header Text */
-.love-text {
-    color: #7BAFD4; /* UNC Blue */
-    font-size: 2.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 50px;
-    text-shadow: 0 0 15px rgba(123, 175, 212, 0.6);
-    animation: fadeInText 2s ease-in-out forwards;
-    opacity: 0;
+.container {
+    text-align: center;
+    padding-top: 40px;
 }
 
-/* Flower Container Alignment */
-.flower-container {
+h1 {
+    color: white;
+    font-size: 3rem;
+    text-shadow: 0 0 15px #7baee6;
+    margin-bottom: 80px;
+}
+
+/* Garden */
+.garden {
     position: relative;
-    width: 300px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 500px;
 }
 
-/* The Flower Base Grouping */
+/* Flower */
 .flower {
     position: absolute;
-    top: 100px;
-    width: 150px;
-    height: 150px;
+    bottom: 0;
+}
+
+.flower1 { left: 30%; }
+.flower2 { left: 50%; }
+.flower3 { left: 70%; }
+
+.stem {
+    width: 8px;
+    height: 250px;
+    background: #2d6a4f;
+    margin: auto;
+    animation: grow 2s ease forwards;
+}
+
+/* Bloom */
+.bloom {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    transform: scale(0);
+    animation: bloom 2s ease forwards;
+    animation-delay: 2s;
+}
+
+.flower2 .bloom {
+    animation-delay: 3s;
+}
+
+.flower3 .bloom {
+    animation-delay: 4s;
+}
+
+.bloom span {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #4b9fe1; /* UNC blue */
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(75,159,225,0.8);
+}
+
+.bloom span:nth-child(1) { top: 0; left: 22px; }
+.bloom span:nth-child(2) { top: 22px; left: 0; }
+.bloom span:nth-child(3) { top: 22px; right: 0; }
+.bloom span:nth-child(4) { bottom: 0; left: 22px; }
+.bloom span:nth-child(5) { top: 22px; left: 22px; }
+
+.center {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 31px;
+    left: 31px;
     z-index: 2;
 }
 
-/* Flower Center (Pistil) */
-.flower-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    z-index: 10;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-}
-
-/* Universal Petal Styling */
-.petal {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50px;
-    height: 90px;
-    background: linear-gradient(to top, #4B9CD3, #7BAFD4); /* UNC Blue Gradient */
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    transform-origin: bottom center;
-    opacity: 0;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3), 0 0 15px rgba(123, 175, 212, 0.4);
-    animation: bloom 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Rotating each petal to form a circle and staggered delays for smooth bloom effect */
-.petal-1 { transform: translateX(-50%) rotate(0deg); animation-delay: 0.5s; }
-.petal-2 { transform: translateX(-50%) rotate(45deg); animation-delay: 0.7s; }
-.petal-3 { transform: translateX(-50%) rotate(90deg); animation-delay: 0.9s; }
-.petal-4 { transform: translateX(-50%) rotate(135deg); animation-delay: 1.1s; }
-.petal-5 { transform: translateX(-50%) rotate(180deg); animation-delay: 1.3s; }
-.petal-6 { transform: translateX(-50%) rotate(225deg); animation-delay: 1.5s; }
-.petal-7 { transform: translateX(-50%) rotate(270deg); animation-delay: 1.7s; }
-.petal-8 { transform: translateX(-50%) rotate(315deg); animation-delay: 1.9s; }
-
-/* Stem */
-.stem {
-    position: absolute;
-    top: 230px;
-    left: 50%;
-    transform: translateX(-50%) scaleY(0);
-    transform-origin: top center;
-    width: 6px;
-    height: 200px;
-    background: linear-gradient(to bottom, #13293d, #2a4d6c);
-    border-radius: 3px;
-    z-index: 1;
-    animation: growStem 1.5s ease-out forwards;
-}
-
-/* Leaf */
-.leaf {
-    position: absolute;
-    top: 280px;
-    left: 50%;
-    width: 40px;
-    height: 25px;
-    background: #2a4d6c;
-    border-radius: 0 20px 0 20px;
-    transform-origin: left center;
-    transform: rotate(-15deg) scale(0);
-    animation: growLeaf 1s ease-out 2s forwards;
-}
-
-/* --- Animations --- */
-
-/* Text fade in and subtle float */
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
+/* Animations */
+@keyframes grow {
+    from {
+        height: 0;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+    to {
+        height: 250px;
     }
 }
 
-/* Stem growth downwards */
-@keyframes growStem {
-    100% {
-        transform: translateX(-50%) scaleY(1);
-    }
-}
-
-/* Leaf popping out */
-@keyframes growLeaf {
-    100% {
-        transform: rotate(-15deg) scale(1);
-    }
-}
-
-/* The actual blooming animation (scales up, fades in, and gently opens outwards) */
 @keyframes bloom {
     0% {
-        transform: translateX(-50%) rotate(var(--rotation)) scale(0);
-        opacity: 0;
+        transform: scale(0) rotate(-90deg);
     }
-    50% {
-        opacity: 0.8;
+    70% {
+        transform: scale(1.2) rotate(10deg);
     }
     100% {
-        opacity: 1;
+        transform: scale(1) rotate(0deg);
     }
 }
-
-/* Dynamic fix to maintain specific rotation coordinates during bloom animation */
-.petal-1 { animation-name: bloom-1; }
-.petal-2 { animation-name: bloom-2; }
-.petal-3 { animation-name: bloom-3; }
-.petal-4 { animation-name: bloom-4; }
-.petal-5 { animation-name: bloom-5; }
-.petal-6 { animation-name: bloom-6; }
-.petal-7 { animation-name: bloom-7; }
-.petal-8 { animation-name: bloom-8; }
-
-@keyframes bloom-1 { 0% { transform: translateX(-50%) rotate(0deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(0deg) scale(1); opacity: 1; } }
-@keyframes bloom-2 { 0% { transform: translateX(-50%) rotate(45deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(45deg) scale(1); opacity: 1; } }
-@keyframes bloom-3 { 0% { transform: translateX(-50%) rotate(90deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(90deg) scale(1); opacity: 1; } }
-@keyframes bloom-4 { 0% { transform: translateX(-50%) rotate(135deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(135deg) scale(1); opacity: 1; } }
-@keyframes bloom-5 { 0% { transform: translateX(-50%) rotate(180deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(180deg) scale(1); opacity: 1; } }
-@keyframes bloom-6 { 0% { transform: translateX(-50%) rotate(225deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(225deg) scale(1); opacity: 1; } }
-@keyframes bloom-7 { 0% { transform: translateX(-50%) rotate(270deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(270deg) scale(1); opacity: 1; } }
-@keyframes bloom-8 { 0% { transform: translateX(-50%) rotate(315deg) scale(0); opacity: 0; } 100% { transform: translateX(-50%) rotate(315deg) scale(1); opacity: 1; } }
