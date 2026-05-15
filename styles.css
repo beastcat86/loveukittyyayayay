@@ -1,8 +1,7 @@
 body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #fdf6ff, #e8fcfb);
+    background: linear-gradient(to bottom, #fff6fb, #e8fcfb);
     overflow: hidden;
 }
 
@@ -14,79 +13,102 @@ body {
 h1 {
     font-size: 3rem;
     color: #0f6b6f;
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
     from { text-shadow: 0 0 8px #b2f5ea; }
-    to { text-shadow: 0 0 22px #81e6d9; }
+    to { text-shadow: 0 0 20px #81e6d9; }
 }
 
-/* Bouquet */
 .bouquet {
     position: relative;
     width: 420px;
-    height: 450px;
-    margin: 20px auto;
+    height: 500px;
+    margin: auto;
     animation: sway 3s ease-in-out infinite alternate;
 }
 
 @keyframes sway {
-    from { transform: rotate(-3deg); }
-    to { transform: rotate(3deg); }
+    from { transform: rotate(-2deg); }
+    to { transform: rotate(2deg); }
 }
 
-/* Flowers */
+/* flower base */
 .flower {
     position: absolute;
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    box-shadow:
-        0 0 0 10px rgba(255,255,255,0.3),
-        0 0 20px rgba(255,255,255,0.4);
+    width: 90px;
+    height: 90px;
 }
 
-/* Different flower colors */
-.flower1 { background: #ff8fab; top: 10px; left: 170px; }
-.flower2 { background: #ffd166; top: 55px; left: 90px; }
-.flower3 { background: #90e0ef; top: 55px; right: 90px; }
-.flower4 { background: #c77dff; top: 120px; left: 40px; }
-.flower5 { background: #80ed99; top: 120px; right: 40px; }
-.flower6 { background: #f9bec7; top: 135px; left: 150px; }
-.flower7 { background: #ffb703; top: 135px; right: 150px; }
-.flower8 { background: #a0c4ff; top: 200px; left: 110px; }
-.flower9 { background: #b8f2e6; top: 200px; right: 110px; }
+.flower span {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
 
-/* Stems */
+.flower span:nth-child(1) { top: 0; left: 22px; }
+.flower span:nth-child(2) { top: 22px; left: 0; }
+.flower span:nth-child(3) { top: 22px; right: 0; }
+.flower span:nth-child(4) { bottom: 0; left: 22px; }
+
+.center {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: #ffd166;
+    border-radius: 50%;
+    top: 29px;
+    left: 29px;
+    z-index: 2;
+}
+
+/* colors + placement */
+.f1 { top: 20px; left: 160px; }
+.f1 span { background: #ff8fab; }
+
+.f2 { top: 80px; left: 70px; }
+.f2 span { background: #90e0ef; }
+
+.f3 { top: 80px; right: 70px; }
+.f3 span { background: #c77dff; }
+
+.f4 { top: 160px; left: 110px; }
+.f4 span { background: #80ed99; }
+
+.f5 { top: 160px; right: 110px; }
+.f5 span { background: #ffd166; }
+
+.f6 { top: 120px; left: 165px; }
+.f6 span { background: #f9bec7; }
+
+/* stems */
 .stem {
     position: absolute;
     width: 8px;
-    height: 210px;
+    height: 220px;
     background: #2f855a;
     border-radius: 10px;
     top: 210px;
 }
 
-.s1 { left: 205px; }
-.s2 { left: 135px; transform: rotate(10deg); }
-.s3 { right: 135px; transform: rotate(-10deg); }
-.s4 { left: 90px; transform: rotate(18deg); }
-.s5 { right: 90px; transform: rotate(-18deg); }
-.s6 { left: 185px; transform: rotate(5deg); }
-.s7 { right: 185px; transform: rotate(-5deg); }
-.s8 { left: 160px; transform: rotate(8deg); }
-.s9 { right: 160px; transform: rotate(-8deg); }
+.s1 { left: 200px; }
+.s2 { left: 120px; transform: rotate(12deg); }
+.s3 { right: 120px; transform: rotate(-12deg); }
+.s4 { left: 165px; transform: rotate(5deg); }
+.s5 { right: 165px; transform: rotate(-5deg); }
+.s6 { left: 210px; transform: rotate(2deg); }
 
-/* Hearts */
+/* hearts */
 .hearts {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .hearts span {
     font-size: 2rem;
     color: #ff8fab;
-    margin: 0 12px;
+    margin: 0 10px;
     animation: float 3s infinite ease-in-out;
 }
 
@@ -94,7 +116,7 @@ h1 {
 .hearts span:nth-child(3) { animation-delay: 2s; }
 
 @keyframes float {
-    0% { transform: translateY(0); opacity: 0.7; }
-    50% { transform: translateY(-18px); opacity: 1; }
-    100% { transform: translateY(0); opacity: 0.7; }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+    100% { transform: translateY(0); }
 }
