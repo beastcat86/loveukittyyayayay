@@ -1,14 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #e8fcfb, #d2f7f4);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #fdf6ff, #e8fcfb);
     overflow: hidden;
 }
 
 .container {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 h1 {
@@ -17,100 +17,84 @@ h1 {
     animation: glow 2s ease-in-out infinite alternate;
 }
 
-.subtitle {
-    font-size: 1.3rem;
-    color: #2d8f91;
-    margin-bottom: 60px;
-}
-
 @keyframes glow {
-    from {
-        text-shadow: 0 0 10px #7fe7df;
-    }
-    to {
-        text-shadow: 0 0 25px #0fa3a8;
-    }
+    from { text-shadow: 0 0 8px #b2f5ea; }
+    to { text-shadow: 0 0 22px #81e6d9; }
 }
 
-/* Flowers */
-.flowers {
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    margin-top: 50px;
-}
-
-.flower {
+/* Bouquet */
+.bouquet {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 420px;
+    height: 450px;
+    margin: 20px auto;
     animation: sway 3s ease-in-out infinite alternate;
 }
 
-.center {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    background: #ffd166;
-    border-radius: 50%;
-    top: 32px;
-    left: 32px;
-    z-index: 2;
-}
-
-.petal {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: #38b2ac;
-    border-radius: 50%;
-}
-
-.p1 { top: 0; left: 30px; }
-.p2 { top: 30px; left: 0; }
-.p3 { top: 30px; right: 0; }
-.p4 { bottom: 0; left: 30px; }
-
 @keyframes sway {
-    from {
-        transform: rotate(-5deg) translateY(0px);
-    }
-    to {
-        transform: rotate(5deg) translateY(-10px);
-    }
+    from { transform: rotate(-3deg); }
+    to { transform: rotate(3deg); }
 }
+
+/* Flowers */
+.flower {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 10px rgba(255,255,255,0.3),
+        0 0 20px rgba(255,255,255,0.4);
+}
+
+/* Different flower colors */
+.flower1 { background: #ff8fab; top: 10px; left: 170px; }
+.flower2 { background: #ffd166; top: 55px; left: 90px; }
+.flower3 { background: #90e0ef; top: 55px; right: 90px; }
+.flower4 { background: #c77dff; top: 120px; left: 40px; }
+.flower5 { background: #80ed99; top: 120px; right: 40px; }
+.flower6 { background: #f9bec7; top: 135px; left: 150px; }
+.flower7 { background: #ffb703; top: 135px; right: 150px; }
+.flower8 { background: #a0c4ff; top: 200px; left: 110px; }
+.flower9 { background: #b8f2e6; top: 200px; right: 110px; }
+
+/* Stems */
+.stem {
+    position: absolute;
+    width: 8px;
+    height: 210px;
+    background: #2f855a;
+    border-radius: 10px;
+    top: 210px;
+}
+
+.s1 { left: 205px; }
+.s2 { left: 135px; transform: rotate(10deg); }
+.s3 { right: 135px; transform: rotate(-10deg); }
+.s4 { left: 90px; transform: rotate(18deg); }
+.s5 { right: 90px; transform: rotate(-18deg); }
+.s6 { left: 185px; transform: rotate(5deg); }
+.s7 { right: 185px; transform: rotate(-5deg); }
+.s8 { left: 160px; transform: rotate(8deg); }
+.s9 { right: 160px; transform: rotate(-8deg); }
 
 /* Hearts */
 .hearts {
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 .hearts span {
     font-size: 2rem;
-    color: #0fa3a8;
-    margin: 0 15px;
+    color: #ff8fab;
+    margin: 0 12px;
     animation: float 3s infinite ease-in-out;
 }
 
-.hearts span:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.hearts span:nth-child(3) {
-    animation-delay: 2s;
-}
+.hearts span:nth-child(2) { animation-delay: 1s; }
+.hearts span:nth-child(3) { animation-delay: 2s; }
 
 @keyframes float {
-    0% {
-        transform: translateY(0);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translateY(-20px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 0.7;
-    }
+    0% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-18px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0.7; }
 }
